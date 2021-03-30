@@ -22,8 +22,7 @@ public class Test {
 		ThreadLocal<DateFormatter> threadLocal = ThreadLocal.withInitial(dateFormatSupplier);
 
 		Date date = new Date();
-		for (int i = 0; i < list.size(); i++) {
-			final DateFormat d = list.get(i);
+		for (final DateFormat d : list) {
 			new Thread(() -> {
 				threadLocal.get().setFormat(d);
 				System.out.println(d.format(date));
